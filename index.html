@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment -4 | Login | SignUp</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <section class="forms">
+      <ul class="tab-group">
+        <li class="tab active login" onclick="tabChange(this)">
+          <a href="#">Log In</a>
+        </li>
+        <li class="tab signup" onclick="tabChange(this)">
+          <a href="#">Sign Up</a>
+        </li>
+      </ul>
+      <form action="Dashboard/index.html" id="login">
+        <h1>Login on MK's Portal</h1>
+        <div class="input-field">
+          <label for="email">Email</label>
+          <input type="email" name="email" required="email" />
+          <label for="password">Password</label>
+          <input type="password" name="password" required />
+          <input type="submit" value="Login" class="button" />
+          <p class="text-p"><a href="#">Forgot password?</a></p>
+        </div>
+      </form>
+      <form action="Dashboard/index.html" id="signup">
+        <h1>Sign Up on MK's Portal</h1>
+        <div class="input-field">
+          <label for="name">Name</label>
+          <input type="name" name="name" required />
+          <label for="email">Email</label>
+          <input type="email" name="email" required="email" />
+          <label for="password">Password</label>
+          <input type="password" name="password" required />
+          <label for="phone">Phone</label>
+          <input type="number" name="phone" required />
+          <label for="city">City</label>
+          <input type="text" name="city" required />
+          <label for="country">Country</label>
+          <input type="text" name="country" required />
+          <input type="submit" value="Sign up" class="button" />
+        </div>
+      </form>
+    </section>
+  </body>
+</html>

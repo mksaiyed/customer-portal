@@ -1,0 +1,160 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: #ddd;
+  display: flex;
+}
+
+/************************************
+Nav Bar Section
+*************************************/
+
+nav {
+  background-color: #40189d;
+  color: #fff;
+  width: 300px;
+}
+
+nav div {
+  padding: 8%;
+  padding-left: 30%;
+  cursor: pointer;
+}
+nav div:hover {
+  transform: scale(1.05);
+}
+nav i {
+  font-size: 1.5rem;
+}
+
+nav div:first-child {
+  margin-top: 70px;
+}
+
+/************************************
+Main List Section
+*************************************/
+.user {
+  width: 300px;
+  height: 80px;
+  float: right;
+  text-align: center;
+  padding: 10px;
+  font-size: 1.2rem;
+  display: flex;
+  cursor: pointer;
+}
+
+.user i {
+  border: 1px solid #888;
+  font-size: 2.5rem;
+  background-color: #eee;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  border-radius: 50%;
+  color: #888;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding: 10px;
+}
+
+section {
+  width: 100%;
+}
+
+.list-section {
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 20px;
+  margin-top: 80px;
+}
+
+.list-section #add-btn {
+  margin: 20px 0px 10px 20px;
+  padding: 10px;
+  background-color: #ddd;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  font-size: 1.1rem;
+}
+
+.list-section #add-btn {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.list-section a {
+  text-decoration: none;
+  color: black;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 1.1rem;
+  width: 100%;
+}
+
+tbody,
+thead,
+tr {
+  margin: 0px;
+}
+
+th {
+  color: #5a3d9c;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+th,
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+#edit-btn {
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: #ddd;
+  padding: 3px 8px;
+  font-size: 1.1rem;
+}
+
+#edit-btn:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+/************************************
+Add / Update Section
+*************************************/
+.forms {
+  display: none;
+  position: absolute;
+  margin-top: 0px;
+  top: 12%;
+  left: 40%;
+  width: 30%;
+}
+
+.cancle {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 1.8rem;
+}
+
+.cancle:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}

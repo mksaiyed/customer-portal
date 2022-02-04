@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment -4 | Dashboard</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/fdad3727e9.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav>
+      <div><i class="fas fa-home"></i> Dashboard</div>
+      <div><i class="fas fa-user-edit"></i> Agency</div>
+      <div><i class="fas fa-users"></i> Clients</div>
+      <div><i class="fas fas fa-compress-arrows-alt"></i> Associations</div>
+    </nav>
+    <section>
+      <div class="user">
+        <i class="fas fa-user"> </i>
+        <div class="user-name">
+          Kaif Saiyed
+        </div>
+      </div>
+      <div class="list-section">
+        <button id="add-btn" onclick="add()">Add Agency</button>
+        <table>
+          <thead>
+              <tr>
+                <th>#&#8593</td>
+                <th>Name&#8593</td>
+                <th>Email&#8593</td>
+                <th>Phone&#8593</td>
+                <th>City&#8593</td>
+                <th>Country&#8593</td>
+                <th>Action</td>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Kaif</td>
+              <td>Kaif@gmail.com</td>
+              <td>2121223212</td>
+              <td>Baroda</td>
+              <td>India</td>
+              <td><button id="edit-btn" onclick="edit(this)">Edit</button></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Shaan</td>
+              <td>Shaan@gmail.com</td>
+              <td>3543648593</td>
+              <td>Rajkot</td>
+              <td>India</td>
+              <td><button id="edit-btn" onclick="edit(this)">Edit</button></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Kaif</td>
+              <td>Kaif@gmail.com</td>
+              <td>2121223212</td>
+              <td>Baroda</td>
+              <td>India</td>
+              <td><button id="edit-btn" onclick="edit(this)">Edit</button></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Shaan</td>
+              <td>Shaan@gmail.com</td>
+              <td>3543648593</td>
+              <td>Rajkot</td>
+              <td>India</td>
+              <td><button id="edit-btn" onclick="edit(this)">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <div class="forms">
+      <form action="#">
+        <h1 id="form-heading"></h1>
+        <i class="fas fa-times cancle" onclick="closeIcon()"></i>
+        <div class="input-field">
+          <label for="name">Name</label>
+          <input type="name" name="name" required />
+          <label for="email">Email</label>
+          <input type="email" name="email" required="email" />
+          <!-- <label for="password">Password</label>
+          <input type="password" name="password" required /> -->
+          <label for="phone">Phone</label>
+          <input type="number" name="phone" required />
+          <label for="city">City</label>
+          <input type="text" name="city" required />
+          <label for="country">Country</label>
+          <input type="text" name="country" required />
+          <input type="submit" value="Sign up" class="button" id="submit-btn" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

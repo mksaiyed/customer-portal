@@ -125,3 +125,8 @@ Form Section
 .text-p a {
   color: #1383ea;
 }
+
+.forms .msg {
+  color: #f00;
+  display: none;
+}

@@ -16,90 +16,59 @@
   <body>
     <nav>
       <div><i class="fas fa-home"></i> Dashboard</div>
-      <div><i class="fas fa-user-edit"></i> Agency</div>
+      <div class="active"><i class="fas fa-user-edit"></i> Agency</div>
       <div><i class="fas fa-users"></i> Clients</div>
       <div><i class="fas fas fa-compress-arrows-alt"></i> Associations</div>
     </nav>
     <section>
-      <div class="user">
+      <div class="user" onclick="updateUser()">
         <i class="fas fa-user"> </i>
-        <div class="user-name">
-          Kaif Saiyed
+        <div class="user-name"></div>
         </div>
       </div>
+      <input type="text" name="search" id="search" placeholder="Search By Country Here ...">
       <div class="list-section">
         <button id="add-btn" onclick="add()">Add Agency</button>
-        <table>
+        <button id="logout" onclick="logout()">Logout</button>
+        <table id="table">
           <thead>
               <tr>
-                <th>#&#8593</td>
-                <th>Name&#8593</td>
-                <th>Email&#8593</td>
-                <th>Phone&#8593</td>
-                <th>City&#8593</td>
-                <th>Country&#8593</td>
+                <th class="Index" onclick="sort(this)">#<span class="arrow"><i class="fas fa-arrow-up"></i></td>
+                <th class="Name" onclick="sort(this)">Name<span class="arrow"><i class="fas fa-arrow-up"></i></span></td>
+                <th class="Email" onclick="sort(this)">Email<span class="arrow"><i class="fas fa-arrow-up"></i></span></td>
+                <th class="Phone" onclick="sort(this)">Phone<span class="arrow"><i class="fas fa-arrow-up"></i></span></td>
+                <th class="City" onclick="sort(this)">City<span class="arrow"><i class="fas fa-arrow-up"></i></span></td>
+                <th class="Country" onclick="sort(this)">Country<span class="arrow"><i class="fas fa-arrow-up"></i></span></td>
                 <th>Action</td>
               </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Kaif</td>
-              <td>Kaif@gmail.com</td>
-              <td>2121223212</td>
-              <td>Baroda</td>
-              <td>India</td>
-              <td><button id="edit-btn" onclick="edit(this)">Edit</button></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Shaan</td>
-              <td>Shaan@gmail.com</td>
-              <td>3543648593</td>
-              <td>Rajkot</td>
-              <td>India</td>
-              <td><button id="edit-btn" onclick="edit(this)">Edit</button></td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Kaif</td>
-              <td>Kaif@gmail.com</td>
-              <td>2121223212</td>
-              <td>Baroda</td>
-              <td>India</td>
-              <td><button id="edit-btn" onclick="edit(this)">Edit</button></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Shaan</td>
-              <td>Shaan@gmail.com</td>
-              <td>3543648593</td>
-              <td>Rajkot</td>
-              <td>India</td>
-              <td><button id="edit-btn" onclick="edit(this)">Edit</button></td>
-            </tr>
+          <tbody id="table-body">
           </tbody>
         </table>
       </div>
+      <div class="btns">
+        <button id="previous" onclick="previous()">Previous</button>
+        <span id="page"></span> 
+        <button id="next" onclick="next()">Next</button>
+      </div>
     </section>
     <div class="forms">
-      <form action="#">
+      <form id="form">
         <h1 id="form-heading"></h1>
         <i class="fas fa-times cancle" onclick="closeIcon()"></i>
         <div class="input-field">
           <label for="name">Name</label>
-          <input type="name" name="name" required />
+          <input type="name" name="name" id="Name" required />
           <label for="email">Email</label>
-          <input type="email" name="email" required="email" />
-          <!-- <label for="password">Password</label>
-          <input type="password" name="password" required /> -->
+          <input type="email" name="email" id="Email" required="email" />
           <label for="phone">Phone</label>
-          <input type="number" name="phone" required />
+          <input type="tel" name="phone" id="Phone" required pattern="[1-9]{1}[0-9]{9}" />
           <label for="city">City</label>
-          <input type="text" name="city" required />
+          <input type="text" name="city" id="City" required />
           <label for="country">Country</label>
-          <input type="text" name="country" required />
-          <input type="submit" value="Sign up" class="button" id="submit-btn" />
+          <input type="text" name="country" id="Country" required />
+          <label for="message" class="msg"></label>
+          <input type="submit" value="Sign up" class="button" id="btn"/>
         </div>
       </form>
     </div>

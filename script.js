@@ -93,7 +93,14 @@ function signup(e) {
 function login(e) {
   e.preventDefault();
   let usersList = JSON.parse(localStorage.getItem("users"));
-  if (usersList.length > 0) {
+  if (usersList == null) {
+    document.querySelectorAll(".msg")[0].innerHTML =
+      "No User Data Found. Please Sign Up!";
+    document.querySelectorAll(".msg")[0].style.display = "block";
+    setTimeout(() => {
+      document.querySelectorAll(".msg")[0].style.display = "none";
+    }, 2000);
+  } else if (usersList.length > 0) {
     // const usersEmail = usersList.map((data) => data["Email"]);
     // const usersPassword = usersList.map((data) => data["Password"]);
 
@@ -115,13 +122,6 @@ function login(e) {
         document.querySelectorAll(".msg")[0].style.display = "none";
       }, 2000);
     }
-  } else {
-    document.querySelectorAll(".msg")[0].innerHTML =
-      "No Data Found. Please Sign Up!";
-    document.querySelectorAll(".msg")[0].style.display = "block";
-    setTimeout(() => {
-      document.querySelectorAll(".msg")[0].style.display = "none";
-    }, 2000);
   }
 
   loginEmail.value = "";

@@ -9,6 +9,10 @@ const email = document.getElementById("Email");
 const phone = document.getElementById("Phone");
 const city = document.getElementById("City");
 const country = document.getElementById("Country");
+const noResult = document.getElementById("NoResult");
+const loader = document.getElementById("loader");
+const tableSection = document.getElementById("table-section");
+// const countrySearch = document.getElementById("countrySearch");
 
 let data;
 let UserList = [];
@@ -19,9 +23,13 @@ page.innerText = currentPage;
 
 // fetching data from Air table
 (async function () {
+  loader.style.display = "block";
+  tableSection.style.display = "none";
   data = await fetch(
     "https://api.airtable.com/v0/appFxv4EL1Fd3jI4Y/Agency?api_key=keyNKqHcL56vfDNNn"
   ).then((response) => response.json());
+  loader.style.display = "none";
+  tableSection.style.display = "block";
 
   for (let i = 0; i < data.records.length; i++) {
     UserList.push(
@@ -36,7 +44,7 @@ page.innerText = currentPage;
       )
     );
   }
-  display();
+  display(UserList);
 })();
 
 class RECORD {
@@ -54,37 +62,53 @@ class RECORD {
 function previous() {
   currentPage--;
   page.innerText = currentPage;
-  display();
+  // display(UserList);
   search();
 }
 function next() {
   currentPage++;
   page.innerText = currentPage;
-  display();
+  // display(UserList);
   search();
 }
-
 // display data
-function display() {
-  if (currentPage == 1) {
-    document.getElementById("previous").disabled = true;
-  } else {
-    document.getElementById("previous").disabled = false;
-  }
-  if (currentPage == Math.ceil(UserList.length / 5)) {
-    document.getElementById("next").disabled = true;
-  } else {
-    document.getElementById("next").disabled = false;
-  }
+function display(FnUserList) {
   const tableBody = document.getElementById("table-body");
+  const buttons = document.getElementsByClassName("btns");
   tableBody.innerHTML = "";
+  buttons[0].style.display = "block";
 
-  for (
-    let i = (currentPage - 1) * 5;
-    i < currentPage * 5 && i < UserList.length;
-    i++
-  ) {
-    addRow(UserList[i]);
+  if (FnUserList.length == 0) {
+    noResult.style.display = "Block";
+  } else {
+    noResult.style.display = "none";
+    if (FnUserList.length < 5) {
+      for (let i = 1; i < currentPage; i++) {
+        previous();
+      }
+      tableBody.innerHTML = "";
+      currentPage == 1;
+    }
+    if (currentPage == 1) {
+      document.getElementById("previous").disabled = true;
+    } else {
+      document.getElementById("previous").disabled = false;
+    }
+    if (
+      currentPage == Math.ceil(FnUserList.length / 5 || FnUserList.length == 0)
+    ) {
+      document.getElementById("next").disabled = true;
+    } else {
+      document.getElementById("next").disabled = false;
+    }
+
+    for (
+      let i = (currentPage - 1) * 5;
+      i < currentPage * 5 && i < FnUserList.length;
+      i++
+    ) {
+      addRow(FnUserList[i]);
+    }
   }
 }
 
@@ -94,11 +118,11 @@ function addRow(user) {
   const tr = tableBody.insertRow(0);
   tr.innerHTML = `
     <td>${user.index}</td>
-    <td class="name">${user.Name}</td>
-    <td class="email">${user.Email}</td>
-    <td class="phone">${user.Phone}</td>
-    <td class="city">${user.City}</td>
-    <td class="country">${user.Country}</td>
+    <td>${user.Name}</td>
+    <td>${user.Email}</td>
+    <td>${user.Phone}</td>
+    <td>${user.City}</td>
+    <td>${user.Country}</td>
     <td style="display:none;" class="id">${user.id}</td>
     <td><button id="edit-btn" onclick="edit(this)">Edit</button> | <button id="delete-btn" onclick="del(this)">Delete</button>
     </td>`;
@@ -283,7 +307,7 @@ function sort(e) {
         }
       });
     }
-    display();
+    display(UserList);
   } else {
     icon.remove("fa-arrow-up");
     icon.add("fa-arrow-down");
@@ -301,7 +325,7 @@ function sort(e) {
         }
       });
     }
-    display();
+    display(UserList);
   }
 }
 
@@ -316,21 +340,33 @@ function debounce(delay) {
       args = arguments;
     clearTimeout(timer);
     timer = setTimeout(() => {
-      search(context, args);
+      search("Name", context, args);
     }, delay);
   };
 }
 
+// Searching Method
 function search() {
   if (input.value.trim() == "") {
-    display();
+    display(UserList);
   } else {
-    const tableBody = document.getElementById("table-body");
-    tableBody.innerHTML = "";
+    // const tableBody = document.getElementById("table-body");
+    // tableBody.innerHTML = "";
+    let List = [];
     for (let x of UserList) {
       if (x.Country.toLowerCase().startsWith(input.value.toLowerCase())) {
-        addRow(x);
+        List.push(x);
       }
     }
+    display(List);
   }
 }
+
+// countrySearch.addEventListener("change", () => {
+//   if (countrySearch.value == "all") {
+//     input.value = "";
+//   } else {
+//     input.value = countrySearch.value;
+//   }
+//   search("Country");
+// });
